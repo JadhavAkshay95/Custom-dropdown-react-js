@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useRef, useState, lazy, Suspense } from "react";
+import "./App.css";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import Header from "./component/Header";
+import Home from "./component/Home";
+import EmployeeList from "./component/EmplyeeList";
+import Form from "./component/Form";
+import Forma from "./component/Form";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Suspense fallback={<div>...loading</div>}>
+          <Router>
+            <Header />
+            <Switch>
+              <Route path="/" component={Home} exact />
+            </Switch>
+          </Router>
+        </Suspense>
+      </div>
     </div>
   );
 }
